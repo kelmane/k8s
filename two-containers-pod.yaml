@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: two-containers-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - name: writer
+        image: nginx
+        ports:
+        - containerPort: 8080
+      - name: reader
+        image: nginx
+        ports:
+        - containerPort: 8080        
